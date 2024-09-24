@@ -1,55 +1,23 @@
-import React, { useState } from "react";
+import React from 'react';
+import { Button, TextField, Box, Typography } from '@mui/material';
 
-const RegisterForm = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (password !== confirmPassword) {
-			alert("Passwords do not match!");
-			return;
-		}
-		console.log("Email:", email);
-		console.log("Password:", password);
-	};
+const RegisterPage = () => {
+  return (
+    <div>
+      {/* <h1>Register Page</h1> */}
+      {/* Add your register form or other components here */}
 
-	return (
-		<div>
-			<h2>Register</h2>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label>Email</label>
-					<input
-						type="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</div>
-				<div>
-					<label>Password</label>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</div>
-				<div>
-					<label>Confirm Password</label>
-					<input
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</div>
-				<button type="submit">Register</button>
-			</form>
-		</div>
-	);
+	  <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+      <Box width={400} p={3} boxShadow={3} borderRadius={5}>
+        <Typography variant="h5" mb={2} align="center">Registrasi</Typography>
+        <TextField label="Email" fullWidth variant="outlined" margin="normal" />
+        <TextField label="Password" type="password" fullWidth variant="outlined" margin="normal" />
+        <Button fullWidth variant="contained" color="primary" sx={{ mt: 2 }}>Login</Button>
+      </Box>
+    </Box>
+    </div>
+  );
 };
 
-export default RegisterForm;
+export default RegisterPage;

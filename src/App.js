@@ -1,42 +1,44 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import { connect } from 'react-redux';
+import { useTheme } from '@mui/material/styles';
+import MyAppBar from "./component/AppBar/MyAppBar"; // Ensure this is the correct import
+import FootBar from "./component/FootBar/FootBar"; // Ensure this is the correct import
 import "./App.css";
+import AppRouter from "./Router"; // Import the Router component
 
-// Import Login and Register Components
-import LoginForm from "./component/Login/Login";
-import RegisterForm from "./component/Register/Register";
+const App = ({ backdrop }) => {
+  const theme = useTheme();
 
-// Import CourseList
-import CourseList from "./component/CourseList/CourseList"; // Import CourseList
+  return (
+    <Router>
+      <MyAppBar /> {/* AppBar stays consistent across routes */}
+      <div className="app-container">
+        <main className="content-container">
+          <AppRouter /> {/* Use the AppRouter for routing */}
+        </main>
+      </div>
+      <FootBar /> {/* FootBar stays consistent across routes */}
 
-// Import Banner
-import BannerApp from "./component/BannerApp/BannerApp";
-// import Router from "./Router";
-// Import AppBar and FootBar
-import MyAppBar from "./component/AppBar/AppBar"; // Pastikan ini adalah AppBar yang benar
-import FootBar from "./component/FootBar/FootBar"; // Import FootBar dari lokasi yang benar
-import Home from "./component/Home/Home"; // Import FootBar dari lokasi yang benar
-// Import FootBar dari lokasi yang benar
+      <Backdrop
+        sx={{
+          zIndex: theme.zIndex.drawer + 1,
+          color: '#fff',
+        }}
+        open={backdrop}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    </Router>
+  );
+};
 
-function App() {
-	return (
-		<Router>
-			<MyAppBar /> {/* Memuat AppBar */}
-			<div className="app-container">
-				<main className="content-container">
-					<Routes>
-						{/* Route untuk Login */}
-						<Route path="/login" element={<LoginForm />} />
-						{/* Route untuk Register */}
-						<Route path="/register" element={<RegisterForm />} />
-						{/* Default Route (Home Page or Other Component) */}
-						<Route path="/" element={<Home />} /> {/* Load CourseList */}
-					</Routes>
-				</main>
-				<FootBar /> {/* Memuat FootBar */}
-			</div>
-		</Router>
-	);
-}
+const mapStateToProps = (state) => {
+  return {
+    backdrop: state.backdropReducer?.show,
+  };
+};
 
-export default App;
+export default connect(mapStateToProps)(App);

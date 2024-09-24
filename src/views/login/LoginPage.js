@@ -1,54 +1,17 @@
-import React, { useState, useEffect } from "react";
-
-// Fungsi untuk lazy loading komponen LoginForm
-function componentLoader(fn, retriesLeft = 5, interval = 1000) {
-	return new Promise((resolve, reject) => {
-		fn()
-			.then(resolve)
-			.catch((error) => {
-				setTimeout(() => {
-					if (retriesLeft === 1) {
-						reject(error);
-						return;
-					}
-					componentLoader(fn, retriesLeft - 1, interval).then(resolve, reject);
-				}, interval);
-			});
-	});
-}
-
-const loadComponent = (loader) => {
-	return function WrapperComponent() {
-		const [Component, setComponent] = useState(null);
-		const [loading, setLoading] = useState(true);
-
-		useEffect(() => {
-			componentLoader(loader).then((module) => {
-				setComponent(() => module.default);
-				setLoading(false);
-			});
-		}, [loader]);
-
-		// Show loading text or loader while the component is being loaded
-		if (loading) {
-			return <div>Loading Login Form...</div>;
-		}
-
-		// Render the loaded component
-		return <Component />;
-	};
-};
-
-// Lazy load LoginForm
-const LoginForm = loadComponent(() => import("."));
+import React from 'react';
+import { Button, TextField, Box, Typography } from '@mui/material';
 
 const LoginPage = () => {
-	return (
-		<div>
-			<h1>Welcome to the Login Page</h1>
-			<LoginForm />
-		</div>
-	);
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+      <Box width={400} p={3} boxShadow={3} borderRadius={5}>
+        <Typography variant="h5" mb={2} align="center">Login</Typography>
+        <TextField label="Email" fullWidth variant="outlined" margin="normal" />
+        <TextField label="Password" type="password" fullWidth variant="outlined" margin="normal" />
+        <Button fullWidth variant="contained" color="primary" sx={{ mt: 2 }}>Login</Button>
+      </Box>
+    </Box>
+  );
 };
 
 export default LoginPage;
