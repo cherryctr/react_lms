@@ -1,6 +1,6 @@
 import React from "react";
-import BannerApp from "../../components/BannerApp/BannerApp";
-import CourseList from "../../components/CourseList/CourseList"; // Assuming you created this component
+import BannerApp from "../BannerApp/BannerApp";
+import CourseList from "../CourseList/CourseList"; // Assuming you created this component
 
 const Home = () => {
 	const courses = [

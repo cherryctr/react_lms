@@ -25,7 +25,7 @@ const Login = lazy(() =>
 	componentLoader(() => import("./views/login/LoginPage"), 1000)
 );
 
-const Register = React.lazy(() => import("./components/Register/Register"));
+const Register = React.lazy(() => import("./component/Register/Register"));
 
 const AppRouter = () => {
 	return (

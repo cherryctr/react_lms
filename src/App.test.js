@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 // Import Login and Register Components
-import LoginForm from "./components/Login/Login";
-import RegisterForm from "./components/Register/Register";
+import LoginForm from "./component/Login/Login";
+import RegisterForm from "./component/Register/Register";
 
 function App() {
 	return (
