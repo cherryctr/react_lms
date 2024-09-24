@@ -25,19 +25,14 @@ const Login = lazy(() =>
 	componentLoader(() => import("./views/login/LoginPage"), 1000)
 );
 
-const Home = lazy(() =>
-	componentLoader(() => import("./views/home/HomePage"), 1000)
-);
-
-// const Register = React.lazy(() => import("./components/Register/Register"));
+const Register = React.lazy(() => import("./components/Register/Register"));
 
 const AppRouter = () => {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/login" element={<Login />} />
-				<Route path="/" element={<Home />} />
-				{/* <Route path="register" element={<Register />} /> */}
+				<Route path="login" element={<Login />} />
+				<Route path="register" element={<Register />} />
 			</Routes>
 		</Router>
 	);
