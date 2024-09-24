@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+
+// Import Login and Register Components
+import LoginForm from "./components/Login/Login";
+import RegisterForm from "./components/Register/Register";
+
+// Import CourseList
+import CourseList from "./components/CourseList/CourseList"; // Import CourseList
+
+// Import Banner
+import BannerApp from "./components/BannerApp/BannerApp";
+import Router from "./Router";
+// Import AppBar and FootBar
+import MyAppBar from "./components/AppBar/AppBar"; // Pastikan ini adalah AppBar yang benar
+import FootBar from "./components/FootBar/FootBar"; // Import FootBar dari lokasi yang benar
+// Import FootBar dari lokasi yang benar
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<MyAppBar /> {/* Memuat AppBar */}
+			<div className="app-container">
+				<main className="content-container">
+					<Router />
+
+				</main>
+				<FootBar /> {/* Memuat FootBar */}
+			</div>
+		</Router>
+	);
 }
 
 export default App;
