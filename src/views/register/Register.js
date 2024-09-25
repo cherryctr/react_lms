@@ -5,9 +5,6 @@ import { Button, TextField, Box, Typography } from '@mui/material';
 const RegisterPage = () => {
   return (
     <div>
-      {/* <h1>Register Page</h1> */}
-      {/* Add your register form or other components here */}
-
 	  <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
       <Box width={400} p={3} boxShadow={3} borderRadius={5}>
         <Typography variant="h5" mb={2} align="center">Registrasi</Typography>
