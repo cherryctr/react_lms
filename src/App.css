@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Prevent horizontal scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* This will hide any horizontal overflow */
+}
+
+.app-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  width: 100%; /* Ensure content takes up full width */
+  /* padding: 20px;
+  box-sizing: border-box; Ensure padding doesn’t cause overflow */
+  background-color: white  !important;
+}

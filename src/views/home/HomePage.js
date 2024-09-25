@@ -1,25 +1,19 @@
 import React from 'react';
-import BannerApp from '../../component/BannerApp/BannerApp'; // Import the BannerApp component
-import { Container, Box } from '@mui/material'; // Optional, if using Material UI for layout
+import { Box, Grid, Typography, Button, Card, CardContent, CardMedia } from '@mui/material';
+import BannerApp from '../../component/BannerApp/BannerApp'; // Ensure this component is exported correctly
+import HomeCourse from './components/HomeCourse'; // Ensure this component is exported correctly
+
 
 const HomePage = () => {
   return (
     <div>
-     
-
-      {/* Load BannerApp */}
+      {/* Banner Section */}
       <BannerApp />
 
-      {/* Main Content */}
-      <Container maxWidth="lg">
-        <Box sx={{ my: 4, textAlign: 'center' }}>
-          <h1>Welcome to MyLMS</h1>
-          <p>Discover new learning opportunities!</p>
-          {/* You can add more components like a registration form or course listing here */}
-        </Box>
-      </Container>
 
-      
+      {/* Load Page gali potensi  */}
+      <HomeCourse />
+
     </div>
   );
 };

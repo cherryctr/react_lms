@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { InputBase } from "@mui/material";
+import { InputBase, Skeleton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle"; 
 import MenuIcon from "@mui/icons-material/Menu"; 
@@ -20,6 +20,14 @@ const MyAppBar = () => {
   const navigate = useNavigate(); 
 
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [loading, setLoading] = useState(true); // Tambahkan loading state
+
+  // Simulasi delay untuk menampilkan skeleton
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false); // Set loading ke false setelah data "dimuat"
+    }, 2000); // Simulasi delay 2 detik
+  }, []);
 
   const handleLoginClick = () => {
     navigate("/login");
@@ -39,14 +47,18 @@ const MyAppBar = () => {
     <AppBar position="static" style={styles.appBar}>
       <Toolbar style={styles.toolbar}>
         <div style={styles.logoContainer}>
-          <img
-            src="https://kartuprakerja.sekolahpintar.com/static/media/Logo_SekolahPintar.fcb3f7a3.png"
-            alt="Logo Sekolah Pintar"
-            style={{
-              ...styles.logo,
-              width: isSmallScreen || isMediumScreen ? "150px" : "200px",
-            }}
-          />
+          {loading ? (
+            <Skeleton variant="rectangular" width={isSmallScreen || isMediumScreen ? 150 : 200} height={40} />
+          ) : (
+            <img
+              src="https://kartuprakerja.sekolahpintar.com/static/media/Logo_SekolahPintar.fcb3f7a3.png"
+              alt="Logo Sekolah Pintar"
+              style={{
+                ...styles.logo,
+                width: isSmallScreen || isMediumScreen ? "150px" : "200px",
+              }}
+            />
+          )}
         </div>
 
         {!isMediumScreen && (
@@ -57,12 +69,18 @@ const MyAppBar = () => {
               marginTop: isSmallScreen ? "10px" : "0",
             }}
           >
-            <SearchIcon style={styles.searchIcon} />
-            <InputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-              style={styles.searchInput}
-            />
+            {loading ? (
+              <Skeleton variant="rectangular" width="100%" height={40} />
+            ) : (
+              <>
+                <SearchIcon style={styles.searchIcon} />
+                <InputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                  style={styles.searchInput}
+                />
+              </>
+            )}
           </div>
         )}
 
@@ -75,7 +93,9 @@ const MyAppBar = () => {
               marginTop: isSmallScreen ? "10px" : "0",
             }}
           >
-            {isSmallScreen ? (
+            {loading ? (
+              <Skeleton variant="rectangular" width={isSmallScreen ? 50 : 100} height={40} />
+            ) : isSmallScreen ? (
               <IconButton color="inherit" onClick={handleLoginClick}>
                 <AccountCircle />
               </IconButton>
