@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, TextField, Box, Typography } from '@mui/material';
 
 
-const RegisterPage = () => {
+const Register = () => {
   return (
     <div>
       {/* <h1>Register Page</h1> */}
@@ -20,4 +20,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default Register;
