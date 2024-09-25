@@ -6,7 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 // Lazy load components
 const Home = lazy(() => import("./views/home/HomePage"));
 const Login = lazy(() => import("./views/login/LoginPage"));
-const Register = lazy(() => import("./views/register/RegisterPage"));
+// const Register = lazy(() => import("./views/register/RegisterPage"));
 
 const AppRouter = () => {
   return (
@@ -14,7 +14,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} /> */}
         <Route path="*" element={<Home />} />
       </Routes>
     </Suspense>
